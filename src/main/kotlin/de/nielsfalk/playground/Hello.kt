@@ -12,6 +12,7 @@ import org.jetbrains.ktor.html.respondHtml
 import org.jetbrains.ktor.locations.Locations
 import org.jetbrains.ktor.locations.get
 import org.jetbrains.ktor.locations.location
+import org.jetbrains.ktor.locations.url
 import org.jetbrains.ktor.logging.CallLogging
 import org.jetbrains.ktor.routing.Routing
 
@@ -25,11 +26,13 @@ fun Application.main() {
     install(CallLogging)
     install(Locations)
     install(Routing) {
+        assets()
         get<home> {
             call.respondHtml {
                 head {
                     title { +title }
                     styleLink("style.css")
+                    styleLink(call.url(Style()))
                     meta {
                         httpEquiv = "Content-Type"
                         content = "text/html; charset=UTF-8"
@@ -39,7 +42,7 @@ fun Application.main() {
                 body {
                     div("header") {
                         div("container") {
-                            img(src = "nf.jpg")
+                            img(src = call.url(NielsImage()))
                             h1 { title }
                             ul {
                                 li { a(href = feature(Locations).href(home())) { +"über mich" } }
@@ -81,3 +84,4 @@ fun Application.main() {
         }
     }
 }
+
