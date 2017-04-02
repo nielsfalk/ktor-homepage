@@ -5,9 +5,7 @@ import kotlinx.html.h2
 import kotlinx.html.p
 import org.jetbrains.ktor.application.Application
 import org.jetbrains.ktor.application.call
-import org.jetbrains.ktor.application.feature
 import org.jetbrains.ktor.html.respondHtml
-import org.jetbrains.ktor.locations.Locations
 import org.jetbrains.ktor.locations.get
 import org.jetbrains.ktor.locations.location
 import org.jetbrains.ktor.routing.Routing
@@ -16,13 +14,14 @@ import org.jetbrains.ktor.routing.Routing
 /**
  * @author Niels Falk
  */
-
-@location("/") class Home
+@location("/") class Home : View {
+    override val linkText: String get() = "über mich"
+}
 
 fun Routing.home(application: Application) {
     get<Home> {
         call.respondHtml {
-            with(Decorator(call, application.feature(Locations))) {
+            with(ViewDecorator(call, application)) {
                 content {
                     h2 { +"Wer bin ich" }
                     p {
@@ -55,6 +54,7 @@ fun Routing.home(application: Application) {
             }
         }
     }
+
 }
 
 

@@ -17,6 +17,8 @@ fun Application.main() {
     install(Routing) {
         assets()
         home(this@main)
+        contact(this@main)
+        imprint(this@main)
     }
 }
 
