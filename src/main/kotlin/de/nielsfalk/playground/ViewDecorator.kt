@@ -6,15 +6,18 @@ import kotlinx.html.*
 import org.jetbrains.ktor.application.Application
 import org.jetbrains.ktor.application.ApplicationCall
 import org.jetbrains.ktor.application.feature
+import org.jetbrains.ktor.html.Placeholder
+import org.jetbrains.ktor.html.Template
+import org.jetbrains.ktor.html.insert
 import org.jetbrains.ktor.locations.Locations
 
 /**
  * @author Niels Falk
  */
-class ViewDecorator(val call: ApplicationCall, val application: Application) : Template<HTML>() {
+class ViewDecorator(val call: ApplicationCall, val application: Application) : Template<HTML> {
     val title = "Niels Falk - Java EE Spezialist"
-    val content = Placeholder<DIV>()
-    override fun HTML.render() {
+    val content = Placeholder<HtmlBlockTag>()
+    override fun HTML.apply() {
         head {
             title { +this@ViewDecorator.title }
             styleLink("style.css")
