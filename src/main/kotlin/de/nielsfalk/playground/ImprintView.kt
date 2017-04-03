@@ -19,10 +19,10 @@ import org.jetbrains.ktor.routing.Routing
     override val linkText: String get() = "Impressum"
 }
 
-fun Routing.imprint(application: Application) {
-    get<Imprint> {
+fun Application.imprint(routing: Routing) {
+    routing.get<Imprint> {
         call.respondHtml {
-            with(ViewDecorator(call, application)) {
+            with(ViewDecorator(call, this@imprint)) {
                 content {
                     h2 { +"Impressum" }
                     p {

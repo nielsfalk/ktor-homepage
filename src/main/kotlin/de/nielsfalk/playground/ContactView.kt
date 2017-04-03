@@ -20,10 +20,10 @@ import org.jetbrains.ktor.routing.Routing
 }
 
 
-fun Routing.contact(application: Application) {
-    get<Contact> {
+fun Application.contact(routing: Routing) {
+    routing.get<Contact> {
         call.respondHtml {
-            with(ViewDecorator(call, application)) {
+            with(ViewDecorator(call, this@contact)) {
                 content {
                     h2 { +"Kontakt" }
                     p { +"Niels Falk" }

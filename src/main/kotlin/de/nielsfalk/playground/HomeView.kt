@@ -18,10 +18,10 @@ import org.jetbrains.ktor.routing.Routing
     override val linkText: String get() = "über mich"
 }
 
-fun Routing.home(application: Application) {
-    get<Home> {
+fun Application.home(routing: Routing) {
+    routing.get<Home> {
         call.respondHtml {
-            with(ViewDecorator(call, application)) {
+            with(ViewDecorator(call, this@home)) {
                 content {
                     h2 { +"Wer bin ich" }
                     p {
