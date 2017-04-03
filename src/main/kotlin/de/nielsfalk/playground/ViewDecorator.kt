@@ -1,5 +1,7 @@
 package de.nielsfalk.playground
 
+import de.nielsfalk.playground.resource.css
+import de.nielsfalk.playground.resource.pictureOfNiels
 import kara.Placeholder
 import kara.Template
 import kara.insert
@@ -8,7 +10,6 @@ import org.jetbrains.ktor.application.Application
 import org.jetbrains.ktor.application.ApplicationCall
 import org.jetbrains.ktor.application.feature
 import org.jetbrains.ktor.locations.Locations
-import org.jetbrains.ktor.locations.url
 
 /**
  * @author Niels Falk
@@ -20,7 +21,7 @@ class ViewDecorator(val call: ApplicationCall, val application: Application) : T
         head {
             title { +this@ViewDecorator.title }
             styleLink("style.css")
-            styleLink(call.url(Style()))
+            styleLink(call.resolve(css))
             meta {
                 httpEquiv = "Content-Type"
                 content = "text/html; charset=UTF-8"
@@ -30,7 +31,7 @@ class ViewDecorator(val call: ApplicationCall, val application: Application) : T
         body {
             div("header") {
                 div("container") {
-                    img(src = call.url(NielsImage()))
+                    img(src = call.resolve(pictureOfNiels))
                     h1 { +this@ViewDecorator.title }
                     ul {
                         val locations = application.feature(Locations)

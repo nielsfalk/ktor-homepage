@@ -28,7 +28,7 @@ fun Routing.home(application: Application) {
                         +"An Softwareentwicklung begeistert mich der Umgang mit Technologie. "
                         +"Nach 10 Jahren in Festanstellungen gehe ich nun als Freiberufler neue Wege. "
                         +"Meine Zielstrebigkeit, der ständige Wunsch nach Ausbau meiner Fähigkeiten "
-                        +"und mein schrittweises Vorgehen findet sich auch in meinen Freizeitaktivitäten"
+                        +"und mein schrittweises Vorgehen findet sich auch in meinen Freizeitaktivitäten "
                         a("http://www.youtube.com/watch?v=FhLnyNwStiE") { +"Einradfahren" }
                         +", Wakeboarding und Slacklining wieder."
                     }
