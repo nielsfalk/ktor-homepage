@@ -1,4 +1,4 @@
-package kara
+package de.nielsfalk.playground
 
 import kotlinx.html.*
 import kotlinx.html.stream.createHTML

@@ -2,9 +2,6 @@ package de.nielsfalk.playground
 
 import de.nielsfalk.playground.resource.css
 import de.nielsfalk.playground.resource.pictureOfNiels
-import kara.Placeholder
-import kara.Template
-import kara.insert
 import kotlinx.html.*
 import org.jetbrains.ktor.application.Application
 import org.jetbrains.ktor.application.ApplicationCall
